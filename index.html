@@ -1,148 +1,347 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FarmTrace - Live Farm to Table Tracking</title>
-  <link rel="stylesheet" href="style.css" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#f5f6ef">
+<title>FarmTrace — Produce with a transparent journey</title>
+<style>
+:root{color-scheme:light dark;--bg:light-dark(#f5f6ef,#111a15);--surface:light-dark(#fffef9,#19231d);--surface2:light-dark(#edf1e6,#222e26);--ink:light-dark(#17271d,#eff5eb);--muted:light-dark(#647166,#a9b8aa);--line:light-dark(#dfe5d9,#35443a);--green:light-dark(#236b43,#8dd9a4);--green2:light-dark(#dff2df,#244831);--lime:light-dark(#d8f36a,#d8f36a);--orange:light-dark(#a65d25,#ffc27d);--red:light-dark(#a43e35,#ffaaa1);--shadow:0 18px 55px rgba(28,52,32,.08)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.5}button,input,select,textarea{font:inherit}button{cursor:pointer}.app{min-height:100vh;background:var(--bg)}.wrap{width:min(1160px,calc(100% - 40px));margin:auto}.nav{height:78px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}.brand{display:flex;gap:11px;align-items:center;font-weight:850;letter-spacing:-.04em;font-size:21px}.brand-mark{width:38px;height:38px;background:var(--green);color:#fff;border-radius:13px;display:grid;place-items:center;font-size:20px;box-shadow:0 7px 20px #2a71452a}.brand small{display:block;color:var(--muted);font-size:10px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;margin-top:-3px}.navlinks{display:flex;gap:25px;align-items:center}.navlinks a{color:var(--muted);text-decoration:none;font-size:13px;font-weight:700}.navlinks a:hover{color:var(--green)}.button{border:0;border-radius:13px;padding:12px 17px;font-weight:800;font-size:13px;display:inline-flex;align-items:center;justify-content:center;gap:8px;transition:transform .15s,opacity .15s}.button:hover{transform:translateY(-1px)}.primary{background:var(--green);color:white}.secondary{background:var(--surface2);color:var(--ink);border:1px solid var(--line)}.dark{background:var(--ink);color:var(--bg)}.small{padding:8px 11px;font-size:12px;border-radius:10px}.hero{display:grid;grid-template-columns:1.04fr .96fr;gap:55px;align-items:center;padding:64px 0 58px}.eyebrow{font-size:11px;letter-spacing:.15em;text-transform:uppercase;font-weight:900;color:var(--green);display:flex;align-items:center;gap:8px}.dot{width:7px;height:7px;border-radius:50%;background:var(--green);display:inline-block}.hero h1{font-size:clamp(42px,5.3vw,69px);line-height:.99;letter-spacing:-.065em;margin:17px 0 22px;max-width:620px}.hero h1 em{font-style:normal;color:var(--green)}.hero p{font-size:16px;line-height:1.75;color:var(--muted);max-width:540px;margin:0 0 27px}.actions{display:flex;flex-wrap:wrap;gap:10px}.trustline{display:flex;gap:15px;flex-wrap:wrap;margin-top:24px;color:var(--muted);font-size:11px;font-weight:700}.trustline span{display:flex;gap:6px;align-items:center}.hero-art{background:#e6eedb;border-radius:30px;min-height:390px;position:relative;overflow:hidden;padding:25px;color:#1b3825}.art-top{display:flex;justify-content:space-between;align-items:center;font-size:11px;font-weight:850;letter-spacing:.09em;text-transform:uppercase}.art-chip{background:#fff;border:1px solid #dbe5d6;border-radius:30px;padding:8px 11px;font-size:10px;letter-spacing:0}.field{position:absolute;inset:83px 0 0;background:linear-gradient(150deg,#c4dba7,#e4edcf 42%,#b4cf94);clip-path:polygon(0 20%,100% 0,100% 100%,0 100%)}.field:before,.field:after{content:"";position:absolute;left:-8%;width:125%;height:50%;border:2px solid #8eb37a;border-radius:50%;transform:rotate(-13deg)}.field:before{top:10%}.field:after{top:40%;left:-14%}.produce{position:absolute;top:115px;left:50%;transform:translateX(-50%);font-size:150px;filter:drop-shadow(0 20px 14px #314e2e2b)}.floating{position:absolute;background:#fffef9;border:1px solid #d9e5d4;border-radius:16px;padding:13px 15px;box-shadow:0 10px 28px #29492c1c}.floating small{display:block;color:#6a7c68;font-size:10px;font-weight:700}.floating strong{font-size:13px;display:block;margin-top:3px}.float-a{left:18px;top:125px}.float-b{right:18px;bottom:35px}.float-c{left:25px;bottom:25px}.section{padding:44px 0}.section-head{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:22px}.section-head h2{font-size:clamp(25px,3vw,37px);letter-spacing:-.045em;margin:7px 0 0}.section-head p{color:var(--muted);font-size:13px;max-width:420px;margin:0}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:13px}.stat{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:19px}.stat .icon{width:34px;height:34px;border-radius:11px;background:var(--green2);display:grid;place-items:center;margin-bottom:17px;color:var(--green);font-size:17px}.stat strong{display:block;font-size:27px;letter-spacing:-.05em}.stat span{color:var(--muted);font-size:12px}.panel{background:var(--surface);border:1px solid var(--line);border-radius:22px;box-shadow:var(--shadow)}.track-panel{padding:24px}.track-form{display:flex;gap:10px;margin-top:16px}.field-control{width:100%;background:var(--bg);border:1px solid var(--line);color:var(--ink);padding:13px 14px;border-radius:12px;outline:none;min-width:0}.field-control:focus{border-color:var(--green);box-shadow:0 0 0 3px color-mix(in srgb,var(--green) 15%,transparent)}.helper{color:var(--muted);font-size:11px;margin-top:10px}.content-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}.panel-title{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:17px}.panel-title h3{font-size:16px;margin:0;letter-spacing:-.025em}.tag{display:inline-flex;align-items:center;gap:6px;padding:6px 9px;border-radius:30px;background:var(--green2);color:var(--green);font-size:10px;font-weight:850;white-space:nowrap}.tag.warn{background:color-mix(in srgb,var(--orange) 14%,var(--surface));color:var(--orange)}.tag.neutral{background:var(--surface2);color:var(--muted)}.batch-list{display:grid;gap:10px}.batch-row{border:1px solid var(--line);border-radius:14px;padding:13px;display:flex;align-items:center;gap:12px}.batch-emoji{width:43px;height:43px;border-radius:13px;background:var(--surface2);display:grid;place-items:center;font-size:23px;flex:none}.batch-info{flex:1;min-width:0}.batch-info strong{font-size:13px;display:block}.batch-info small{color:var(--muted);font-size:11px}.batch-meta{text-align:right}.batch-meta strong{display:block;font-size:12px}.batch-meta small{font-size:10px;color:var(--muted)}.timeline{position:relative;padding-left:24px;display:grid;gap:17px}.timeline:before{content:"";position:absolute;left:6px;top:8px;bottom:12px;width:1px;background:var(--line)}.event{position:relative}.event:before{content:"";position:absolute;left:-22px;top:5px;width:9px;height:9px;border-radius:50%;background:var(--green);box-shadow:0 0 0 4px var(--green2)}.event strong{display:block;font-size:12px}.event p{font-size:11px;color:var(--muted);margin:3px 0}.event small{font-size:10px;color:var(--muted)}.consumer{display:grid;grid-template-columns:.8fr 1.2fr;gap:24px;padding:25px;align-items:start}.consumer-left{background:var(--surface2);border-radius:17px;padding:20px;text-align:center}.qr-shell{background:white;border:8px solid white;border-radius:13px;width:150px;height:150px;margin:14px auto;display:grid;place-items:center;overflow:hidden}.qr-shell svg{width:100%;height:100%}.consumer-left h3{font-size:16px;margin:5px 0}.consumer-left p{color:var(--muted);font-size:11px;margin:4px 0 15px}.consumer-detail h3{margin:0 0 5px;font-size:20px;letter-spacing:-.035em}.consumer-detail>p{margin:0 0 17px;color:var(--muted);font-size:12px}.detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-bottom:18px}.detail{border:1px solid var(--line);border-radius:12px;padding:11px}.detail small{display:block;color:var(--muted);font-size:10px}.detail strong{display:block;font-size:12px;margin-top:3px}.notice{background:color-mix(in srgb,var(--orange) 11%,var(--surface));border:1px solid color-mix(in srgb,var(--orange) 25%,var(--line));color:var(--ink);padding:12px;border-radius:12px;font-size:11px;line-height:1.6}.tabs{display:flex;gap:5px;background:var(--surface2);padding:5px;border-radius:13px}.tab{border:0;background:transparent;color:var(--muted);padding:9px 13px;border-radius:10px;font-size:12px;font-weight:800}.tab.active{background:var(--surface);color:var(--ink);box-shadow:0 2px 7px #0000000c}.operator-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:18px}.form-panel{padding:22px}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:11px}.form-group{display:grid;gap:6px}.form-group label{font-size:11px;color:var(--muted);font-weight:800}.form-group.full{grid-column:1/-1}.audit-item{padding:12px 0;border-bottom:1px solid var(--line);display:flex;gap:10px;align-items:start}.audit-item:last-child{border:0}.audit-bullet{width:30px;height:30px;border-radius:10px;background:var(--surface2);display:grid;place-items:center;flex:none}.audit-item strong{font-size:12px;display:block}.audit-item p{font-size:11px;color:var(--muted);margin:3px 0}.audit-item time{font-size:10px;color:var(--muted)}.features{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}.feature{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:20px}.feature .feature-icon{font-size:23px;margin-bottom:18px}.feature h3{font-size:15px;margin:0 0 8px}.feature p{font-size:12px;line-height:1.7;color:var(--muted);margin:0}.footer{border-top:1px solid var(--line);margin-top:40px;padding:23px 0 30px;display:flex;justify-content:space-between;gap:20px;color:var(--muted);font-size:11px}.footer strong{color:var(--ink)}.hidden{display:none!important}.section-label{font-size:10px;text-transform:uppercase;letter-spacing:.13em;font-weight:900;color:var(--muted);margin-bottom:8px}.toast{position:fixed;bottom:20px;left:50%;transform:translate(-50%,20px);opacity:0;pointer-events:none;background:var(--ink);color:var(--bg);padding:12px 17px;border-radius:12px;font-size:12px;font-weight:800;box-shadow:var(--shadow);transition:.2s;z-index:99;max-width:calc(100% - 30px)}.toast.show{opacity:1;transform:translate(-50%,0)}.modal-backdrop{position:fixed;inset:0;background:#09130dcc;display:grid;place-items:center;padding:20px;z-index:50}.modal{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:24px;width:min(520px,100%);box-shadow:var(--shadow)}.modal h3{margin:0 0 6px}.modal p{font-size:12px;color:var(--muted);margin:0 0 18px}.modal-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:18px}.disclaimer{font-size:10px;color:var(--muted);line-height:1.6;margin-top:14px}.mobile-menu{display:none}
+@media(max-width:850px){.hero{grid-template-columns:1fr;gap:30px;padding-top:44px}.hero-art{min-height:340px}.stats{grid-template-columns:repeat(2,1fr)}.content-grid,.operator-grid{grid-template-columns:1fr}.consumer{grid-template-columns:1fr}.consumer-left{max-width:none}.features{grid-template-columns:1fr 1fr}.navlinks{gap:13px}.navlinks a{font-size:12px}}
+@media(max-width:560px){.wrap{width:min(100% - 26px,1160px)}.nav{height:67px}.brand{font-size:18px}.brand-mark{width:34px;height:34px}.navlinks a:not(.nav-cta){display:none}.nav-cta{padding:9px 11px}.hero{padding:36px 0}.hero h1{font-size:43px}.hero p{font-size:14px}.hero-art{min-height:310px;padding:18px}.produce{font-size:115px;top:112px}.float-a{left:10px;top:116px}.float-b{right:9px;bottom:26px}.float-c{left:10px;bottom:17px}.floating{padding:10px 11px}.stats{gap:9px}.stat{padding:14px}.stat strong{font-size:23px}.section{padding:30px 0}.section-head{align-items:start;flex-direction:column}.track-panel,.form-panel{padding:17px}.track-form{flex-direction:column}.features{grid-template-columns:1fr}.consumer{padding:15px}.detail-grid{grid-template-columns:1fr 1fr}.form-grid{grid-template-columns:1fr}.form-group.full{grid-column:auto}.footer{flex-direction:column}.batch-row{padding:10px}.batch-meta{display:none}}
 
-  <!-- Firebase App & Firestore SDKs (v9 Compat Mode for direct HTML/JS use) -->
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+.login-gate{position:fixed;inset:0;z-index:200;background:linear-gradient(135deg,#10251a,#1c4b31 60%,#d8f36a);display:grid;place-items:center;padding:20px}
+.login-card{width:min(480px,100%);background:#fffef9;color:#17271d;border-radius:26px;padding:30px;box-shadow:0 25px 90px #0005}
+.login-brand{display:flex;align-items:center;gap:12px;font-size:22px;font-weight:900;letter-spacing:-.04em}
+.login-brand-mark{width:44px;height:44px;border-radius:14px;background:#236b43;color:white;display:grid;place-items:center;font-size:22px}
+.login-card h1{font-size:30px;line-height:1.05;letter-spacing:-.05em;margin:26px 0 8px}
+.login-card>p{color:#647166;font-size:13px;line-height:1.65;margin:0 0 20px}
+.login-card label{display:block;font-size:12px;font-weight:800;margin:12px 0 6px}
+.login-card input,.login-card select{width:100%;padding:13px;border:1px solid #dfe5d9;border-radius:12px;background:white;color:#17271d}
+.login-error{font-size:12px;color:#a43e35;min-height:18px;margin-top:8px}
+.demo-credentials{background:#edf1e6;border-radius:13px;padding:12px;font-size:11px;line-height:1.6;color:#435344;margin-top:14px}
+.role-banner{background:var(--green2);border:1px solid var(--line);border-radius:15px;padding:14px 16px;display:flex;align-items:center;justify-content:space-between;gap:12px;margin:18px 0}
+.role-banner strong{display:block}.role-banner small{color:var(--muted)}
+.data-connect{padding:22px}.csv-table-wrap{overflow:auto;margin-top:14px}.csv-table{border-collapse:collapse;width:100%;font-size:11px;min-width:520px}.csv-table th,.csv-table td{padding:9px;border-bottom:1px solid var(--line);text-align:left}.csv-table th{background:var(--surface2)}
+body.qr-entry-mode{background:linear-gradient(135deg,#10251a,#1c4b31 60%,#d8f36a);min-height:100vh;padding:20px}body.qr-entry-mode .app{display:none!important}body.qr-entry-mode #qrEntryPanel{display:block!important;width:min(680px,100%);margin:20px auto;background:#fffef9;color:#17271d;border-radius:24px;padding:25px;box-shadow:0 25px 90px #0004}#qrEntryPanel{display:none}#qrEntryPanel h1{font-size:27px;letter-spacing:-.04em;margin:8px 0}#qrEntryPanel p{color:#647166;font-size:13px}#qrEntryPanel .form-panel{box-shadow:none;padding:0;border:0;background:transparent}#qrEntryPanel .field-control{background:#fff;color:#17271d;border-color:#dfe5d9}#qrEntryPanel .section-label{color:#236b43}
+
+</style>
 </head>
 <body>
+<div class="app" id="app">
+<header class="wrap nav">
+  <a class="brand" href="#home" style="text-decoration:none;color:inherit"><span class="brand-mark">↗</span><span>FarmTrace<small>Know your produce</small></span></a>
+  <nav class="navlinks"><a href="#how">How it works</a><a href="#trace">Trace a batch</a><a href="#consumer">Consumer view</a><a href="#dataConnect">Data</a><button class="button primary nav-cta" onclick="showSection('operator')">Operator desk ↗</button></nav>
+</header>
+<main><div class="wrap role-banner hidden" id="roleBanner"><div><strong id="roleTitle">Workspace</strong><small id="roleDescription">Role-specific tools</small></div><button class="button secondary small" onclick="farmTraceLogout()">Sign out</button></div>
+<section class="wrap hero" id="home">
+  <div><div class="eyebrow"><span class="dot"></span> Farm-to-table transparency</div><h1>Good food has a story. <em>See every step.</em></h1><p>FarmTrace gives each produce batch a digital journey—from harvest to collection, transport and retail—so consumers can see the records behind their food.</p><div class="actions"><button class="button primary" onclick="document.getElementById('batchSearch').focus();document.getElementById('trace').scrollIntoView({behavior:'smooth'})">Trace your vegetables <span>→</span></button><button class="button secondary" onclick="showSection('consumer')">Explore consumer view</button></div><div class="trustline"><span>✓ Batch-level history</span><span>✓ Checkpoint accountability</span><span>✓ Clear verification status</span></div></div>
+  <div class="hero-art"><div class="art-top"><span>From source to shelf</span><span class="art-chip">FarmTrace system</span></div><div class="field"></div><div class="produce">🥬</div><div class="floating float-a"><small>Batch identity</small><strong>FT-2026-001</strong></div><div class="floating float-b"><small>Journey status</small><strong>3 checkpoints recorded</strong></div><div class="floating float-c"><small>Designed for</small><strong>Farmers · Sellers · Homes</strong></div></div>
+</section>
+<section class="wrap section" id="overview"><div class="section-head"><div><div class="eyebrow">The tracking overview</div><h2>One batch. One shared story.</h2></div><p>A demo dashboard showing how batch-level records can be presented. Counts below update as you add checkpoints in this preview.</p></div><div class="stats"><div class="stat"><div class="icon">▦</div><strong id="statBatches">3</strong><span>Demo batches</span></div><div class="stat"><div class="icon">✓</div><strong id="statEvents">8</strong><span>Recorded checkpoints</span></div><div class="stat"><div class="icon">◎</div><strong id="statVerified">2</strong><span>Demo batches with confirmed checkpoints</span></div><div class="stat"><div class="icon">!</div><strong id="statFlags">1</strong><span>Batch needs review</span></div></div><p class="disclaimer">These are demonstration records, not live farm data. A checkpoint marked “verified” means the demo record has been confirmed in the prototype—not independently certified food origin.</p></section>
+<section class="wrap section" id="trace"><div class="section-head"><div><div class="eyebrow">Consumer lookup</div><h2>Trace a batch</h2></div><p>Enter the batch ID from a produce label or scan the QR code when connected to a deployed trace page.</p></div><div class="panel track-panel"><div class="section-label">Batch lookup</div><div class="track-form"><input id="batchSearch" class="field-control" placeholder="Enter batch ID, e.g. FT-2026-001" value="FT-2026-001" aria-label="Batch ID"><button class="button primary" onclick="traceBatch()">View journey →</button></div><div class="helper">Try demo batches: FT-2026-001, FT-2026-002, FT-2026-003.</div><div id="lookupResult" class="hidden" style="margin-top:20px"></div></div></section>
+<section class="wrap section" id="how"><div class="section-head"><div><div class="eyebrow">Built around accountability</div><h2>Designed for the real journey</h2></div><p>Track the record, show its status and make gaps visible instead of claiming every entry is automatically true.</p></div><div class="features"><article class="feature"><div class="feature-icon">🏷️</div><h3>Unique batch identity</h3><p>Every lot gets a distinct ID. Its public trace page shows only information intended for consumers.</p></article><article class="feature"><div class="feature-icon">🧾</div><h3>Checkpoint history</h3><p>Authorized operators record handovers. Each event keeps an operator label, time and notes in the prototype audit history.</p></article><article class="feature"><div class="feature-icon">🛡️</div><h3>Honest verification</h3><p>Missing or questionable details are flagged. QR codes improve access to records; they do not, by themselves, prove authenticity.</p></article></div></section>
+<section class="wrap section" id="consumer"><div class="section-head"><div><div class="eyebrow">At-home experience</div><h2>What a consumer sees</h2></div><p>Clear information, a readable journey and an honest status—not a technical dashboard or a forced sign-up.</p></div><div class="panel consumer"><div class="consumer-left"><div class="section-label">Sample package label</div><div class="qr-shell" id="qrDisplay" aria-label="Demo QR visual"></div><h3>Scan to know more</h3><p>Batch FT-2026-001 · Tomatoes</p><button class="button secondary small" onclick="copyTraceLink()">Copy trace link</button><div class="disclaimer">Demo QR artwork is illustrative and is not a scannable code. A deployed version must generate a real QR code linked to the matching batch page.</div></div><div class="consumer-detail"><div class="panel-title"><div><div class="section-label">Consumer batch report</div><h3 id="consumerProduct">Farm-fresh tomatoes</h3></div><span class="tag" id="consumerStatus">● Recorded journey</span></div><p id="consumerSubtitle">Batch FT-2026-001 · Demo data</p><div class="detail-grid"><div class="detail"><small>Reported origin</small><strong id="consumerOrigin">Demo farm, Gujarat</strong></div><div class="detail"><small>Harvest date</small><strong id="consumerHarvest">12 Oct 2026</strong></div><div class="detail"><small>Recorded checkpoints</small><strong id="consumerCheckpoints">3 of 3</strong></div><div class="detail"><small>Freshness indicator</small><strong id="consumerFreshness">Age-based estimate</strong></div></div><div class="section-label">Journey history</div><div class="timeline" id="consumerTimeline"></div><div class="notice" style="margin-top:19px"><strong>How to read this:</strong> “Recorded” means an event exists in the prototype. “Verified at checkpoint” means a designated operator confirmed the specific checkpoint. Neither status alone guarantees pesticide safety, cold-chain compliance or the full truth of origin claims.</div></div></div></section>
 
-  <!-- Navigation -->
-  <header class="navbar">
-    <div class="nav-container">
-      <h1 class="logo">Farm<span>Trace</span></h1>
-      <nav>
-        <a href="#home">Home</a>
-        <a href="#trace">Trace Produce</a>
-      </nav>
+<section class="wrap section" id="dataConnect">
+  <div class="section-head"><div><div class="eyebrow">Connected records</div><h2>Batch data connection</h2></div><p>Load an exported CSV to inspect the real sheet columns and records. This preview cannot fetch Google Sheets directly from its sandbox.</p></div>
+  <div class="panel data-connect">
+    <div class="actions">
+      <a class="button primary" href="https://docs.google.com/spreadsheets/d/e/2PACx-1vQf5KepcNqN6J_d00pArS5ykwf7xw7KcNYeEPDtZ51scidOiBa3NMcESn4Kdo372SXsAsREdK7TC64c/pub?output=csv" target="_blank" rel="noopener">Open published CSV ↗</a>
+      <label class="button secondary" for="csvUpload">Import downloaded CSV</label><input id="csvUpload" type="file" accept=".csv,text/csv" class="hidden">
     </div>
-  </header>
-
-  <!-- Main Hero Section -->
-  <main>
-    <section id="home" class="hero-section">
-      <div class="container hero-content">
-        <h2>Live Farm-to-Table Provenance</h2>
-        <p>Real-time checkpoint verification powered by Cloud Firestore.</p>
-      </div>
-    </section>
-
-    <!-- Trace Section -->
-    <section id="trace" class="trace-section">
-      <div class="container">
-        <div class="card search-card">
-          <h2>Trace a Batch</h2>
-          <p>Scan a product QR code or enter the batch code manually below.</p>
-          <div class="search-bar">
-            <input type="text" id="manual-batch-input" placeholder="e.g. TOM-001, POT-001" />
-            <button class="btn btn-primary" onclick="handleManualSearch()">Search</button>
-          </div>
-        </div>
-
-        <!-- Dynamic Batch Tracking Area -->
-        <div id="batch-container" class="card tracking-card" style="display: none;">
-          <div class="tracking-header">
-            <div>
-              <span class="badge" id="batch-crop-name">Loading Produce...</span>
-              <h3 id="current-batch-header">Batch: ---</h3>
-            </div>
-            <button id="btn-record-stop" class="btn btn-accent" onclick="openLoginModal()" style="display: none;">
-              Record a Stop
-            </button>
-          </div>
-
-          <hr class="divider" />
-
-          <h4>Journey Timeline</h4>
-          <div id="batch-timeline" class="timeline">
-            <p style="color: #666;">Fetching live data from cloud...</p>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- Modal 1: Staff Authentication -->
-  <div id="ft-login-modal" class="ft-modal" style="display: none;">
-    <div class="ft-modal-box">
-      <h3>Staff Authentication</h3>
-      <p>Sign in to record a verified stop for this batch.</p>
-      
-      <div class="form-group">
-        <label for="ft-email">Email Address</label>
-        <input type="email" id="ft-email" placeholder="e.g. kushal@FT.com" required />
-      </div>
-      
-      <div class="form-group">
-        <label for="ft-password">Password</label>
-        <input type="password" id="ft-password" placeholder="••••••••" required />
-      </div>
-
-      <p id="ft-auth-err" class="error-msg" style="display: none;">Invalid credentials. Please verify your credentials.</p>
-
-      <div class="modal-actions">
-        <button type="button" class="btn btn-secondary" onclick="closeFtModal('ft-login-modal')">Cancel</button>
-        <button type="button" class="btn btn-primary" onclick="authenticateUser()">Sign In</button>
-      </div>
-    </div>
+    <p class="helper">Download the CSV from Google Sheets, then import it here. The file is processed locally in this browser preview.</p>
+    <div id="csvStatus" class="notice" style="margin-top:14px">No CSV imported yet. Sample dashboard data remains labelled as demonstration data.</div>
+    <div class="csv-table-wrap" id="csvTableWrap"></div>
   </div>
+</section>
 
-  <!-- Modal 2: Checkpoint Record Form -->
-  <div id="ft-record-modal" class="ft-modal" style="display: none;">
-    <div class="ft-modal-box">
-      <h3>Record a Batch Checkpoint</h3>
-      <p>Log the physical status, location, and condition of this produce run.</p>
+<section class="wrap section" id="operator"><div class="section-head"><div><div class="eyebrow">Authorized entry demo</div><h2>Operator desk</h2></div><p>Demonstrate how a collection-centre worker or transporter could record a handover without a farmer-only form. This preview stores changes in memory only.</p></div><div class="operator-grid"><div class="panel form-panel"><div class="panel-title"><h3>Record a checkpoint</h3><span class="tag neutral">Prototype</span></div><form id="checkpointForm"><div class="form-grid"><div class="form-group full"><label for="operatorBatch">Batch ID</label><select id="operatorBatch" class="field-control"><option>FT-2026-001</option><option>FT-2026-002</option><option>FT-2026-003</option></select></div><div class="form-group"><label for="checkpointType">Checkpoint</label><select id="checkpointType" class="field-control"><option>Collection centre</option><option>Transport dispatch</option><option>Retail arrival</option><option>Quality inspection</option></select></div><div class="form-group"><label for="operatorRole">Operator role</label><select id="operatorRole" class="field-control"><option>Collection-centre worker</option><option>Transporter</option><option>Retailer</option><option>Quality checker</option></select></div><div class="form-group full"><label for="checkpointLocation">Location label</label><input id="checkpointLocation" class="field-control" placeholder="e.g. Veraval collection centre" required></div><div class="form-group full"><label for="checkpointNotes">Evidence / notes</label><textarea id="checkpointNotes" class="field-control" rows="2" placeholder="e.g. crate count checked; 18 crates received"></textarea></div><div class="form-group full"><label style="display:flex;gap:9px;align-items:start;color:var(--ink);font-weight:600"><input type="checkbox" id="confirmRecord" required style="margin-top:4px"> I confirm this is a demonstration record and have checked the information entered.</label></div><div class="form-group full"><button class="button primary" type="submit">Add checkpoint to demo →</button></div></div></form><div class="disclaimer">No login, backend, GPS proof or tamper-resistant storage is configured in this preview. Do not enter personal or sensitive information.</div></div><div class="panel form-panel"><div class="panel-title"><h3>Recent audit events</h3><button class="button secondary small" onclick="downloadAudit()">Export CSV ↓</button></div><div id="auditList"></div></div></div></section>
+<section class="wrap section" id="jury"><div class="section-head"><div><div class="eyebrow">Evidence before claims</div><h2>What FarmTrace can—and cannot—prove</h2></div></div><div class="content-grid"><div class="panel form-panel"><div class="panel-title"><h3>Current prototype capabilities</h3><span class="tag">Demonstrable</span></div><div class="audit-item"><span class="audit-bullet">✓</span><div><strong>Unique batch lookup</strong><p>Users can search the demo batch IDs and view their records.</p></div></div><div class="audit-item"><span class="audit-bullet">✓</span><div><strong>Checkpoint entry in preview</strong><p>Adding a checkpoint updates the current session's timeline and audit list.</p></div></div><div class="audit-item"><span class="audit-bullet">✓</span><div><strong>Visible missing-data status</strong><p>Incomplete or flagged demo records are labelled instead of being presented as fully verified.</p></div></div></div><div class="panel form-panel"><div class="panel-title"><h3>Not yet implemented</h3><span class="tag warn">Be transparent</span></div><div class="audit-item"><span class="audit-bullet">!</span><div><strong>Persistent shared database</strong><p>Session changes do not sync to another device or survive a full reload reliably.</p></div></div><div class="audit-item"><span class="audit-bullet">!</span><div><strong>Real QR generation and scanning</strong><p>The sample label artwork is illustrative; production QR links need to be generated and tested.</p></div></div><div class="audit-item"><span class="audit-bullet">!</span><div><strong>Identity, GPS and independent checks</strong><p>These require backend setup, permissions and a real operational verification process.</p></div></div></div></div></section>
+<section class="wrap section" id="juryWorkbench"><div class="section-head"><div><div class="eyebrow">Round 2 submission workbench</div><h2>Build the evidence, not just the website</h2></div><p>Tools aligned to the Grade 9 HCL Jigsaw Round 2 instructions you provided. Saved work here is local to this browser preview unless exported.</p></div><div class="content-grid"><div class="panel form-panel"><div class="panel-title"><h3>Prototype photo evidence</h3><span class="tag neutral">Your real photos only</span></div><p class="helper">Add your own prototype photos. The instructions require TOP, SIDE and FRONT views; do not use generated or internet images as proof.</p><div class="form-grid"><div class="form-group full"><label for="photoTop">TOP view — batch, tag and device/model</label><input class="field-control" id="photoTop" type="file" accept="image/*" onchange="previewEvidencePhoto('photoTop','previewTop')"><img id="previewTop" class="hidden" alt="Your uploaded top view" style="width:100%;max-height:220px;object-fit:contain;border:1px solid var(--line);border-radius:12px;padding:6px"></div><div class="form-group full"><label for="photoSide">SIDE view — tag attachment and printed details</label><input class="field-control" id="photoSide" type="file" accept="image/*" onchange="previewEvidencePhoto('photoSide','previewSide')"><img id="previewSide" class="hidden" alt="Your uploaded side view" style="width:100%;max-height:220px;object-fit:contain;border:1px solid var(--line);border-radius:12px;padding:6px"></div><div class="form-group full"><label for="photoFront">FRONT view — shopper-facing tag and phone journey</label><input class="field-control" id="photoFront" type="file" accept="image/*" onchange="previewEvidencePhoto('photoFront','previewFront')"><img id="previewFront" class="hidden" alt="Your uploaded front view" style="width:100%;max-height:220px;object-fit:contain;border:1px solid var(--line);border-radius:12px;padding:6px"></div></div><div class="disclaimer">Photos are previewed in this session and are not uploaded to a server. Save the original images separately and insert them into the official PPT template.</div></div><div class="panel form-panel"><div class="panel-title"><h3>Journey log builder</h3><span class="tag warn">Evidence status required</span></div><div class="notice" style="margin-bottom:14px"><strong>Important:</strong> the supplied HCL instructions explicitly ask for one real batch traced stop by stop on Slide 7. A simulated route is useful for testing the system but does not satisfy that requirement by itself. Since you will not visit the mandi, do not label invented times, distances or events as real. Ask a parent/teacher to help obtain a permitted real-batch record remotely, or disclose the simulation and ask your teacher whether it is acceptable.</div><form id="journeyForm"><div class="form-grid"><div class="form-group"><label for="journeyBatch">Batch ID</label><input id="journeyBatch" class="field-control" value="FT-2026-001" required></div><div class="form-group"><label for="journeyEvidence">Evidence type</label><select id="journeyEvidence" class="field-control"><option value="simulation">Desk simulation (not field-verified)</option><option value="remote">Remote information — source must be recorded</option><option value="observed">Directly observed by team / adult</option></select></div><div class="form-group"><label for="journeyDate">Journey date</label><input id="journeyDate" class="field-control" type="date" required></div><div class="form-group"><label for="journeySource">Source / observer role</label><input id="journeySource" class="field-control" placeholder="e.g. teacher, trader (no personal details)" required></div><div class="form-group full"><label for="journeyStops">Stops, times, approximate distance and handling (one stop per line)</label><textarea id="journeyStops" class="field-control" rows="5" required placeholder="Farm — 07:00 — 0 km — batch tagged\nCollection/mandi — 09:00 — 12 km — weighed\nShop — 10:30 — 5 km — received\nKitchen — 18:00 — 2 km — consumer received"></textarea></div><div class="form-group full"><label for="journeyIssue">What went wrong and what changed?</label><textarea id="journeyIssue" class="field-control" rows="2" placeholder="Describe a real test issue, or write 'Not tested yet'."></textarea></div><div class="form-group full"><button class="button primary" type="submit">Save journey log in this preview</button> <button class="button secondary" type="button" onclick="exportJourneyLog()">Export journey CSV ↓</button></div></div></form><div id="journeySaved" class="notice hidden" style="margin-top:12px"></div><div class="disclaimer">Do not enter names, phone numbers or other personal details. Saved journey entries are kept in this page session only; export them before leaving.</div></div></div></section>
+<section class="wrap section" id="scaleWorkbench"><div class="section-head"><div><div class="eyebrow">Slide 6 and Slide 8 support</div><h2>Parts, cost and business calculator</h2></div><p>Enter prices you have checked. The figures below are calculations, not market-price claims.</p></div><div class="panel form-panel"><div class="form-grid"><div class="form-group"><label for="tagCost">Cost per tag (₹)</label><input id="tagCost" class="field-control" type="number" min="0" step="0.01" value="2"></div><div class="form-group"><label for="tagsYear">Tags per farmer per year</label><input id="tagsYear" class="field-control" type="number" min="0" step="1" value="100"></div><div class="form-group"><label for="setupCost">App/setup cost per year (₹)</label><input id="setupCost" class="field-control" type="number" min="0" step="1" value="50000"></div><div class="form-group"><label for="trainingCost">Training cost per year (₹)</label><input id="trainingCost" class="field-control" type="number" min="0" step="1" value="75000"></div><div class="form-group"><label for="deviceCost">Devices/other cost per year (₹)</label><input id="deviceCost" class="field-control" type="number" min="0" step="1" value="100000"></div><div class="form-group"><label for="farmerCount">Farmers served</label><input id="farmerCount" class="field-control" type="number" min="1" step="1" value="1000"></div><div class="form-group"><label for="revenuePerFarmer">Revenue per farmer/year (₹)</label><input id="revenuePerFarmer" class="field-control" type="number" min="0" step="1" value="500"></div><div class="form-group"><label for="otherPartsCost">One-time prototype parts total (₹)</label><input id="otherPartsCost" class="field-control" type="number" min="0" step="0.01" value="260"></div></div><div class="actions" style="margin-top:15px"><button class="button primary" onclick="calculateScale()">Calculate costs</button><button class="button secondary" onclick="downloadPartsList()">Export calculation CSV ↓</button></div><div class="stats" style="margin-top:18px"><div class="stat"><span>Annual tags cost</span><strong id="calcTags">₹2,00,000</strong></div><div class="stat"><span>Annual total cost</span><strong id="calcTotal">₹4,25,000</strong></div><div class="stat"><span>Annual revenue</span><strong id="calcRevenue">₹5,00,000</strong></div><div class="stat"><span>Difference before unlisted costs</span><strong id="calcMargin">₹75,000</strong></div></div><div class="notice" style="margin-top:14px">Before using this in your PPT, verify actual market prices and state assumptions. This simple estimate does not include any cost you have not entered, taxes, replacements, logistics or unexpected expenses.</div></div></section>
+<section class="wrap section" id="submissionWorkbench"><div class="section-head"><div><div class="eyebrow">Official submission checklist</div><h2>All eight slides and the pitch video</h2></div><p>Checklist based on the instructions document supplied in this conversation. Mark only what your team has actually completed.</p></div><div class="content-grid"><div class="panel form-panel"><div class="panel-title"><h3>Eight-slide PPT checklist</h3><span class="tag neutral" id="slideProgress">0 / 8</span></div><div class="batch-list" id="slideChecklist"></div><div class="actions" style="margin-top:14px"><button class="button secondary" onclick="downloadChecklist()">Export checklist CSV ↓</button></div></div><div class="panel form-panel"><div class="panel-title"><h3>2–3 minute pitch structure</h3><span class="tag">Every member speaks</span></div><div class="timeline"><div class="event"><strong>0:00–0:20 · Hook and team</strong><p>Team name and one verified observation from the journey log. If you only simulated it, say so.</p></div><div class="event"><strong>0:20–0:50 · Problem</strong><p>What shoppers and farmers cannot see today and why that matters.</p></div><div class="event"><strong>0:50–1:50 · Prototype demonstration</strong><p>Show the physical tag, scan a real working QR if available, and show the matching journey page. Label modelled components.</p></div><div class="event"><strong>1:50–2:30 · Scale and business</strong><p>Show the 1,000-farmer calculation, who pays, expected revenue and assumptions.</p></div><div class="event"><strong>2:30–3:00 · Close</strong><p>Ask the buyer/FPO to run a small trial and thank them.</p></div></div><div class="notice" style="margin-top:16px">Use landscape video, steady framing, a quiet room and guardian permission. Every team member must speak. Upload both PPT and video to the HCL Jigsaw Portal; one member can upload and others can approve.</div></div></div></section>
+</main>
+<footer class="wrap footer"><div><strong>FarmTrace</strong> · Produce with a transparent journey</div><div>HCL Jigsaw Round 2 · Interactive prototype preview</div></footer>
+</div>
 
-      <form id="ft-record-form" onsubmit="submitStopRecord(event)">
-        <div class="form-group">
-          <label for="rec-batch">Batch Code</label>
-          <input type="text" id="rec-batch" readonly />
-        </div>
+<div class="login-gate" id="loginGate">
+  <form class="login-card" id="loginForm">
+    <div class="login-brand"><span class="login-brand-mark">↗</span><span>FarmTrace<small style="display:block;color:#647166;font-size:10px;letter-spacing:.12em;text-transform:uppercase">Know your produce</small></span></div>
+    <h1>Welcome back.<br><span style="color:#236b43">Track with trust.</span></h1>
+    <p>Sign in to open the workspace assigned to your role in the produce journey.</p>
+    <label for="loginUser">Username</label><input id="loginUser" autocomplete="username" placeholder="Enter your username" required>
+    <label for="loginPass">Password</label><input id="loginPass" type="password" autocomplete="current-password" placeholder="Enter your password" required>
+    <button class="button primary" style="width:100%;margin-top:16px" type="submit">Sign in securely →</button>
+    <div class="login-error" id="loginError" role="alert"></div>
+    <div class="demo-credentials"><strong>Prototype demo accounts</strong><br>farm / farm123 · mandi / mandi123<br>shop / shop123 · home / home123<br><em>Demo only: these credentials are not production security.</em></div>
+  </form>
+</div>
 
-        <div class="form-group">
-          <label for="rec-role">Logged By (User / Role)</label>
-          <input type="text" id="rec-role" readonly />
-        </div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<div id="modalRoot"></div>
+<section id="qrEntryPanel" aria-live="polite"><div class="login-brand"><span class="login-brand-mark">↗</span><span>FarmTrace<small style="display:block;color:#647166;font-size:10px;letter-spacing:.12em;text-transform:uppercase">Batch entry</small></span></div><h1>Update this batch</h1><p id="qrEntryDescription">Sign in to record a checkpoint for the scanned batch.</p><div id="qrEntryBatch" class="notice"></div><div id="qrEntryFormHost"></div><p class="disclaimer">Only submit information you are authorized to record. Entries are stored as records and are not independently verified just because a QR code was scanned.</p><button type="button" class="button secondary" onclick="farmTraceLogout()">Sign out</button></section>
+<script>
+const initialBatches={
+ 'TOM-001':{id:'TOM-001',product:'Tomatoes',emoji:'🍅',origin:'Not provided',harvest:'Not provided',freshness:'Not calculated',status:'incomplete',flag:false,events:[]},
+ 'FT-2026-001':{id:'FT-2026-001',product:'Tomatoes',emoji:'🍅',origin:'Demo farm, Gujarat',harvest:'12 Oct 2026',freshness:'Age-based estimate',status:'recorded',flag:false,events:[{type:'Harvest recorded',place:'Demo farm, Gujarat',date:'12 Oct 2026 · 07:20',role:'Farm record',notes:'Sample harvest entry; origin not independently verified.',verified:false},{type:'Collection centre',place:'Demo collection centre',date:'12 Oct 2026 · 10:45',role:'Collection-centre worker',notes:'Sample crate count recorded.',verified:true},{type:'Transport dispatch',place:'Demo distribution route',date:'12 Oct 2026 · 13:10',role:'Transporter',notes:'Sample dispatch record.',verified:true}]},
+ 'FT-2026-002':{id:'FT-2026-002',product:'Green chillies',emoji:'🌶️',origin:'Demo farm, Saurashtra',harvest:'13 Oct 2026',freshness:'Age-based estimate',status:'incomplete',flag:false,events:[{type:'Harvest recorded',place:'Demo farm, Saurashtra',date:'13 Oct 2026 · 06:50',role:'Farm record',notes:'Sample harvest entry.',verified:false},{type:'Collection centre',place:'Awaiting record',date:'Not recorded',role:'—',notes:'Checkpoint missing; journey incomplete.',verified:false}]},
+ 'FT-2026-003':{id:'FT-2026-003',product:'Okra (bhindi)',emoji:'🥬',origin:'Demo farm, Junagadh',harvest:'11 Oct 2026',freshness:'Age-based estimate',status:'review',flag:true,events:[{type:'Harvest recorded',place:'Demo farm, Junagadh',date:'11 Oct 2026 · 07:10',role:'Farm record',notes:'Sample harvest entry.',verified:false},{type:'Collection centre',place:'Demo collection centre',date:'11 Oct 2026 · 11:15',role:'Collection-centre worker',notes:'Sample inspection record.',verified:true},{type:'Record flagged',place:'Demo checkpoint',date:'11 Oct 2026 · 11:20',role:'System flag',notes:'Example discrepancy: recorded crate count needs review.',verified:false}]}
+};
+let batches=JSON.parse(JSON.stringify(initialBatches));let audit=[{batch:'FT-2026-003',title:'Record flagged for review',detail:'Example crate-count discrepancy',time:'11 Oct 2026 · 11:20',role:'System flag'},{batch:'FT-2026-001',title:'Transport dispatch',detail:'Demo distribution route',time:'12 Oct 2026 · 13:10',role:'Transporter'},{batch:'FT-2026-001',title:'Collection checkpoint confirmed',detail:'Demo collection centre',time:'12 Oct 2026 · 10:45',role:'Collection-centre worker'}];let currentBatch='FT-2026-001';
+function esc(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function showToast(t){const el=document.getElementById('toast');el.textContent=t;el.classList.add('show');clearTimeout(window.toastTimer);window.toastTimer=setTimeout(()=>el.classList.remove('show'),2600)}
+function showSection(id){document.getElementById(id).scrollIntoView({behavior:'smooth'});if(id==='consumer')renderConsumer(currentBatch)}
+function statusLabel(b){return b.flag?'Flagged for review':b.status==='incomplete'?'Incomplete journey':'Journey recorded'}
+function statusClass(b){return b.flag||b.status==='review'?'warn':b.status==='incomplete'?'neutral':''}
+function traceBatch(id){id=(id||document.getElementById('batchSearch').value).trim().toUpperCase();const b=batches[id];const out=document.getElementById('lookupResult');if(!b){out.classList.remove('hidden');out.innerHTML='<div class="notice">No batch found for <strong>'+esc(id)+'</strong>. Check the ID and try FT-2026-001, FT-2026-002 or FT-2026-003.</div>';return}currentBatch=id;out.classList.remove('hidden');out.innerHTML='<div class="panel-title"><div><div class="section-label">Batch report</div><h3>'+b.emoji+' '+esc(b.product)+' · '+esc(b.id)+'</h3></div><span class="tag '+statusClass(b)+'">'+esc(statusLabel(b))+'</span></div><div class="detail-grid"><div class="detail"><small>Reported origin</small><strong>'+esc(b.origin)+'</strong></div><div class="detail"><small>Harvest date</small><strong>'+esc(b.harvest)+'</strong></div><div class="detail"><small>Checkpoints</small><strong>'+b.events.length+' recorded</strong></div><div class="detail"><small>Freshness</small><strong>'+esc(b.freshness)+'</strong></div></div><div class="section-label">Recorded journey</div><div class="timeline">'+b.events.map(e=>'<div class="event"><strong>'+esc(e.type)+' '+(e.verified?'<span class="tag">Confirmed</span>':'<span class="tag neutral">Unverified</span>')+'</strong><p>'+esc(e.place)+' · '+esc(e.role)+'</p><small>'+esc(e.date)+' · '+esc(e.notes)+'</small></div>').join('')+'</div><div class="notice" style="margin-top:16px">'+(b.flag?'This batch has a flagged record that requires review.':b.status==='incomplete'?'This journey has missing checkpoint information.':'This is a demonstration journey. Checkpoint confirmation does not independently prove farm origin or food safety.')+'</div><div style="margin-top:14px"><button class="button secondary small" onclick="renderConsumer(\''+b.id+'\');showSection(\'consumer\')">Open consumer report ↗</button></div>';renderConsumer(id);renderStats()}
+function renderConsumer(id){const b=batches[id]||batches['TOM-001'];currentBatch=b.id;document.getElementById('consumerProduct').textContent=b.product;document.getElementById('consumerSubtitle').textContent='Batch '+b.id+(b.events.length?' · Demonstration data':' · Journey details not yet supplied');document.getElementById('consumerOrigin').textContent=b.origin;document.getElementById('consumerHarvest').textContent=b.harvest;document.getElementById('consumerCheckpoints').textContent=b.events.length+' recorded';document.getElementById('consumerFreshness').textContent=b.freshness;const s=document.getElementById('consumerStatus');s.textContent='● '+statusLabel(b);s.className='tag '+statusClass(b);document.getElementById('consumerTimeline').innerHTML=b.events.length?b.events.map(e=>'<div class="event"><strong>'+esc(e.type)+' '+(e.verified?'<span class="tag">Confirmed</span>':'<span class="tag neutral">Unverified</span>')+'</strong><p>'+esc(e.place)+'</p><small>'+esc(e.date)+' · '+esc(e.role)+'</small></div>').join(''):'<div class="notice">No journey events have been supplied for this batch yet. Add only records supported by evidence.</div>';renderQrIllustration(b.id)}
+function renderQrIllustration(id){const shell=document.getElementById('qrDisplay');if(id==='TOM-001'){shell.innerHTML='<img src="https://api.qrserver.com/v1/create-qr-code/?size=220x220&data=https%3A%2F%2Fqrfy.io%2FMF-QbTiVDT" alt="Scannable QR code for the supplied QRFY destination" style="width:100%;height:100%;object-fit:contain">';return}let seed=0;for(const c of id)seed=(seed*31+c.charCodeAt(0))>>>0;let cells='';for(let y=0;y<21;y++){for(let x=0;x<21;x++){const finder=(ox,oy)=>x>=ox&&x<ox+7&&y>=oy&&y<oy+7&&(x===ox||x===ox+6||y===oy||y===oy+6||(x>=ox+2&&x<=ox+4&&y>=oy+2&&y<=oy+4));let on=finder(0,0)||finder(14,0)||finder(0,14);if(!on){seed=(seed*1664525+1013904223)>>>0;on=(seed>>>29)&1}if(on)cells+=`<rect x="${x}" y="${y}" width="1" height="1"/>`}}shell.innerHTML='<svg viewBox="-1 -1 23 23" role="img" aria-label="Illustrative QR-style pattern"><rect x="-1" y="-1" width="23" height="23" fill="#fff"/><g fill="#183222">'+cells+'</g></svg>'}
+function renderStats(){const vals=Object.values(batches);document.getElementById('statBatches').textContent=vals.length;document.getElementById('statEvents').textContent=vals.reduce((n,b)=>n+b.events.length,0);document.getElementById('statVerified').textContent=vals.filter(b=>b.events.some(e=>e.verified)&&!b.flag).length;document.getElementById('statFlags').textContent=vals.filter(b=>b.flag).length;const opts=Object.keys(batches).map(id=>'<option>'+esc(id)+'</option>').join('');const sel=document.getElementById('operatorBatch');const old=sel.value;sel.innerHTML=opts;sel.value=batches[old]?old:Object.keys(batches)[0];renderBatchList()}
+function renderBatchList(){const container=document.getElementById('auditList');container.innerHTML=audit.slice(0,8).map(a=>'<div class="audit-item"><span class="audit-bullet">'+(a.title.includes('flag')?'!':'↗')+'</span><div><strong>'+esc(a.title)+' · '+esc(a.batch)+'</strong><p>'+esc(a.detail)+' · '+esc(a.role)+'</p><time>'+esc(a.time)+'</time></div></div>').join('')}
+document.getElementById('checkpointForm').addEventListener('submit',e=>{e.preventDefault();const id=document.getElementById('operatorBatch').value;const b=batches[id];const type=document.getElementById('checkpointType').value;const role=document.getElementById('operatorRole').value;const place=document.getElementById('checkpointLocation').value.trim();const notes=document.getElementById('checkpointNotes').value.trim()||'No additional notes provided.';if(!place){showToast('Enter a location label first.');return}const now=new Date();const stamp=now.toLocaleDateString('en-IN',{day:'2-digit',month:'short',year:'numeric'})+' · '+now.toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit'});const event={type,place,date:stamp,role,notes,verified:false};b.events.push(event);b.status='recorded';b.flag=false;audit.unshift({batch:id,title:type,detail:place+' — '+notes,time:stamp,role});renderStats();renderConsumer(id);document.getElementById('batchSearch').value=id;traceBatch(id);document.getElementById('checkpointLocation').value='';document.getElementById('checkpointNotes').value='';document.getElementById('confirmRecord').checked=false;showToast('Checkpoint added to this preview session.');});
+function copyTraceLink(){const url=location.href.split('#')[0]+'#trace='+encodeURIComponent(currentBatch);if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(url).then(()=>showToast('Trace link copied.')).catch(()=>showToast('Trace ID: '+currentBatch))}else showToast('Trace ID: '+currentBatch+' — copy the page URL and ID manually.')}
+function downloadAudit(){const rows=[['Batch ID','Event','Details','Time','Operator role'],...audit.map(a=>[a.batch,a.title,a.detail,a.time,a.role])];const csv=rows.map(r=>r.map(v=>'"'+String(v).replace(/"/g,'""')+'"').join(',')).join('\r\n');const blob=new Blob([csv],{type:'text/csv;charset=utf-8;'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='farmtrace-demo-audit.csv';a.click();URL.revokeObjectURL(url);showToast('Demo audit CSV exported.')}
+document.getElementById('batchSearch').addEventListener('keydown',e=>{if(e.key==='Enter')traceBatch()});
+const slideTasks=['Slide 1: Keep title slide unchanged.','Slide 2: Team, school/city, member roles, video link, prototype type and actual spend.','Slide 3: Name vegetable and route; explain shopper/farmer information gaps and users.','Slide 4: Add real TOP, SIDE and FRONT photos with specific captions.','Slide 5: Explain TAG → TRACK → SHOW, data at every stop, and farmer/shopper views.','Slide 6: List each part/tool, job, real or model status, verified market price and total.','Slide 7: One real batch, stops, times, approximate distances, handling count, problem and fix.','Slide 8: Annual cost for 1,000 farmers with working, payer, revenue vs cost and 3-line pitch.'];
+function renderSlideChecklist(){const el=document.getElementById('slideChecklist');el.innerHTML=slideTasks.map((t,i)=>'<label class="batch-row" style="cursor:pointer;align-items:flex-start"><input type="checkbox" data-slide="'+i+'" onchange="updateSlideProgress()" style="margin-top:4px"><span class="batch-info"><strong>'+esc(t.split(':')[0])+'</strong><small>'+esc(t.substring(t.indexOf(':')+1).trim())+'</small></span></label>').join('');updateSlideProgress()}
+function updateSlideProgress(){const checks=[...document.querySelectorAll('[data-slide]')];const n=checks.filter(c=>c.checked).length;document.getElementById('slideProgress').textContent=n+' / 8 complete'}
+function previewEvidencePhoto(inputId,imgId){const f=document.getElementById(inputId).files[0];const img=document.getElementById(imgId);if(!f){img.classList.add('hidden');return}if(!f.type.startsWith('image/')){showToast('Choose an image file.');return}img.src=URL.createObjectURL(f);img.classList.remove('hidden')}
+let journeyLog=null;
+document.getElementById('journeyForm').addEventListener('submit',e=>{e.preventDefault();const mode=document.getElementById('journeyEvidence').value;journeyLog={batch:document.getElementById('journeyBatch').value.trim(),evidenceType:mode,date:document.getElementById('journeyDate').value,source:document.getElementById('journeySource').value.trim(),stops:document.getElementById('journeyStops').value.trim(),issue:document.getElementById('journeyIssue').value.trim()||'Not specified'};const msg=document.getElementById('journeySaved');msg.classList.remove('hidden');msg.innerHTML='<strong>Journey log saved for export.</strong><br>Evidence status: '+esc(mode==='simulation'?'SIMULATION — not a real-batch record':mode==='remote'?'REMOTE SOURCE — confirm source and permission':'DIRECT OBSERVATION — verify details before submission')+'<br>Batch: '+esc(journeyLog.batch)+' · Date: '+esc(journeyLog.date)+'<br><strong>Do not present a simulation as real mandi evidence.</strong>';showToast('Journey log prepared in this preview.')});
+function downloadCsv(name,rows){const csv=rows.map(r=>r.map(v=>'"'+String(v??'').replace(/"/g,'""')+'"').join(',')).join('\r\n');const blob=new Blob(['\ufeff'+csv],{type:'text/csv;charset=utf-8;'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=name;a.click();URL.revokeObjectURL(url)}
+function exportJourneyLog(){if(!journeyLog){showToast('Save a journey log first.');return}downloadCsv('farmtrace-journey-log.csv',[['Batch ID','Evidence type','Date','Source/observer role','Stops / time / distance / handling','What went wrong and changed'],[journeyLog.batch,journeyLog.evidenceType,journeyLog.date,journeyLog.source,journeyLog.stops,journeyLog.issue]])}
+function scaleValues(){const v=id=>Math.max(0,Number(document.getElementById(id).value)||0);const farmers=Math.max(1,v('farmerCount'));const tags=v('tagCost')*v('tagsYear')*farmers;const total=tags+v('setupCost')+v('trainingCost')+v('deviceCost');const revenue=v('revenuePerFarmer')*farmers;return {farmers,tags,total,revenue,difference:revenue-total,prototype:v('otherPartsCost')}}
+function money(n){return '₹'+Math.round(n).toLocaleString('en-IN')}
+function calculateScale(){const v=scaleValues();document.getElementById('calcTags').textContent=money(v.tags);document.getElementById('calcTotal').textContent=money(v.total);document.getElementById('calcRevenue').textContent=money(v.revenue);document.getElementById('calcMargin').textContent=money(v.difference);document.getElementById('calcMargin').style.color=v.difference<0?'var(--red)':'var(--green)'}
+function downloadPartsList(){const v=scaleValues();downloadCsv('farmtrace-cost-model.csv',[['Item','Value','Unit'],['Cost per tag',document.getElementById('tagCost').value,'INR/tag'],['Tags per farmer/year',document.getElementById('tagsYear').value,'tags'],['Farmers',v.farmers,'farmers'],['Annual tag cost',v.tags,'INR/year'],['App/setup',document.getElementById('setupCost').value,'INR/year'],['Training',document.getElementById('trainingCost').value,'INR/year'],['Devices/other',document.getElementById('deviceCost').value,'INR/year'],['Annual total cost',v.total,'INR/year'],['Revenue per farmer/year',document.getElementById('revenuePerFarmer').value,'INR'],['Annual revenue',v.revenue,'INR/year'],['Difference before unlisted costs',v.difference,'INR/year'],['Prototype parts total',v.prototype,'INR one-time']])}
+function downloadChecklist(){const rows=[['Slide','Requirement','Complete'],...slideTasks.map((t,i)=>[i+1,t,document.querySelector('[data-slide="'+i+'"]').checked?'Yes':'No'])];downloadCsv('farmtrace-round2-checklist.csv',rows)}
+renderSlideChecklist();calculateScale();renderStats();renderConsumer('TOM-001');document.getElementById('batchSearch').value='TOM-001';traceBatch('TOM-001');if(location.hash.startsWith('#trace=')){const id=decodeURIComponent(location.hash.slice(7));document.getElementById('batchSearch').value=id;traceBatch(id)}
 
-        <div class="form-group">
-          <label for="rec-time">Current Timestamp</label>
-          <input type="text" id="rec-time" readonly />
-        </div>
+const farmTraceUsers = {
+  farm:{password:'farm123',role:'Farm',description:'Create and update harvest and batch-origin records.'},
+  mandi:{password:'mandi123',role:'Mandi',description:'Record receipt, weighing and batch handovers.'},
+  shop:{password:'shop123',role:'Shop',description:'Record retail arrival and batch availability.'},
+  home:{password:'home123',role:'Home',description:'Search batch journeys and view consumer-facing reports.'}
+};
+let activeFarmTraceRole = null;
+document.getElementById('loginForm').addEventListener('submit',function(e){
+  e.preventDefault();
+  const username=document.getElementById('loginUser').value.trim().toLowerCase();
+  const password=document.getElementById('loginPass').value;
+  const account=farmTraceUsers[username];
+  if(!account || account.password!==password){
+    document.getElementById('loginError').textContent='Username or password is incorrect.';
+    return;
+  }
+  activeFarmTraceRole=account.role;
+  document.getElementById('loginGate').classList.add('hidden');
+  document.getElementById('roleBanner').classList.remove('hidden');
+  document.getElementById('roleTitle').textContent=account.role+' workspace';
+  document.getElementById('roleDescription').textContent=account.description;
+  applyRoleView(account.role);
+  activateQrEntryMode();
+  showToast('Signed in to the '+account.role+' demo workspace.');
+});
+function applyRoleView(role){
+  const operator=document.getElementById('operator');
+  const workbench=document.getElementById('juryWorkbench');
+  const scale=document.getElementById('scaleWorkbench');
+  const submission=document.getElementById('submissionWorkbench');
+  const data=document.getElementById('dataConnect');
+  operator.classList.toggle('hidden',role==='Home');
+  workbench.classList.toggle('hidden',role!=='Farm');
+  scale.classList.toggle('hidden',role!=='Farm');
+  submission.classList.toggle('hidden',role!=='Farm');
+  data.classList.toggle('hidden',role==='Home');
+  if(role==='Home'){
+    document.getElementById('trace').scrollIntoView({behavior:'smooth'});
+  }else if(role==='Farm'){
+    document.getElementById('operatorRole').value='Collection-centre worker';
+    document.getElementById('operator').scrollIntoView({behavior:'smooth'});
+  }else{
+    document.getElementById('operator').scrollIntoView({behavior:'smooth'});
+  }
+}
+function activateQrEntryMode(){
+  if(!location.hash.startsWith('#trace='))return;
+  const id=decodeURIComponent(location.hash.slice(7)).toUpperCase();
+  document.body.classList.add('qr-entry-mode');
+  const panel=document.getElementById('qrEntryPanel');
+  const batch=batches[id];
+  document.getElementById('qrEntryBatch').innerHTML=batch?'<strong>'+esc(batch.id)+' · '+esc(batch.product)+'</strong><br>Reported origin: '+esc(batch.origin)+'<br>Current checkpoints: '+batch.events.length:'<strong>Batch '+esc(id)+'</strong><br>This batch is not yet loaded. Check the ID or connect to the shared database.';
+  document.getElementById('qrEntryDescription').textContent='Signed in as '+(activeFarmTraceRole||'operator')+'. Complete the checkpoint form below.';
+  const form=document.getElementById('checkpointForm');
+  document.getElementById('qrEntryFormHost').appendChild(form);
+  const select=document.getElementById('operatorBatch');
+  if([...select.options].some(o=>o.value===id))select.value=id;else{const opt=document.createElement('option');opt.value=id;opt.textContent=id;select.insertBefore(opt,select.firstChild);select.value=id;}
+  const roleSelect=document.getElementById('operatorRole');
+  const roleMap={Farm:'Collection-centre worker',Mandi:'Collection-centre worker',Shop:'Retailer'};
+  if(roleMap[activeFarmTraceRole])roleSelect.value=roleMap[activeFarmTraceRole];
+  const formButton=form.querySelector('button[type="submit"]');if(formButton)formButton.textContent='Submit batch update →';
+}
+function farmTraceLogout(){
+  activeFarmTraceRole=null;
+  document.body.classList.remove('qr-entry-mode');
+  const form=document.getElementById('checkpointForm');const original=document.querySelector('#operator .form-panel');if(form&&original)original.appendChild(form);
+  document.getElementById('loginGate').classList.remove('hidden');
+  document.getElementById('roleBanner').classList.add('hidden');
+  document.getElementById('loginPass').value='';
+  document.getElementById('loginError').textContent='';
+  document.getElementById('loginUser').focus();
+}
+document.getElementById('csvUpload').addEventListener('change',async function(e){
+  const file=e.target.files[0]; if(!file)return;
+  const textData=await file.text();
+  const rows=parseCsvRows(textData);
+  const status=document.getElementById('csvStatus');
+  const wrap=document.getElementById('csvTableWrap');
+  if(rows.length<1){status.textContent='No readable rows found in this CSV.';wrap.innerHTML='';return;}
+  const headers=rows[0];
+  const preview=rows.slice(1,11);
+  status.textContent='Imported '+file.name+' · '+Math.max(0,rows.length-1)+' data rows · showing up to 10 rows. Imported data is a local preview and is not yet synced to a shared database.';
+  wrap.innerHTML='<table class="csv-table"><thead><tr>'+headers.map(h=>'<th>'+esc(h)+'</th>').join('')+'</tr></thead><tbody>'+preview.map(row=>'<tr>'+headers.map((_,i)=>'<td>'+esc(row[i]||'')+'</td>').join('')+'</tr>').join('')+'</tbody></table>';
+});
+function parseCsvRows(input){
+  const rows=[];let row=[],cell='',quoted=false;
+  for(let i=0;i<input.length;i++){
+    const c=input[i],next=input[i+1];
+    if(c==='"'&&quoted&&next==='"'){cell+='"';i++;}
+    else if(c==='"'){quoted=!quoted;}
+    else if(c===','&&!quoted){row.push(cell);cell='';}
+    else if((c==='\n'||c==='\r')&&!quoted){
+      if(c==='\r'&&next==='\n')i++;
+      row.push(cell);if(row.some(v=>v.trim()!==''))rows.push(row);row=[];cell='';
+    }else cell+=c;
+  }
+  if(cell.length||row.length){row.push(cell);if(row.some(v=>v.trim()!==''))rows.push(row);}
+  return rows;
+}
 
-        <div class="form-group">
-          <label for="rec-location">Auto GPS Coordinates / Map Link</label>
-          <input type="text" id="rec-location" readonly />
-        </div>
+/* FarmTrace connected prototype layer: persistent local records, batch creation,
+   CSV-to-tracking import, public batch links and complete exports. This remains
+   browser-local; a shared multi-user database requires a deployed backend. */
+const FARMTRACE_STORE='farmtrace.records.v2';
+function saveFarmTrace(){try{localStorage.setItem(FARMTRACE_STORE,JSON.stringify({batches,audit}))}catch(err){showToast('Browser storage unavailable; export your records as CSV.')}}
+function loadFarmTrace(){try{const saved=JSON.parse(localStorage.getItem(FARMTRACE_STORE)||'null');if(saved&&saved.batches&&typeof saved.batches==='object'){batches=saved.batches;audit=Array.isArray(saved.audit)?saved.audit:audit}}catch(err){console.warn('FarmTrace saved data could not be read.')}}
+function normalizeHeader(s){return String(s||'').trim().toLowerCase().replace(/[^a-z0-9]/g,'')}
+function findCol(headers,aliases){return headers.findIndex(h=>aliases.includes(normalizeHeader(h)))}
+function importRowsIntoTracking(rows){if(!rows||rows.length<2)return {added:0,updated:0,skipped:0};const headers=rows[0];const idx={id:findCol(headers,['batchid','batch','batchno','lotid','traceid','id']),product:findCol(headers,['product','crop','vegetable','item','produce']),origin:findCol(headers,['origin','farm','farmname','source','location']),harvest:findCol(headers,['harvestdate','harvest','date']),type:findCol(headers,['checkpoint','event','stage','eventtype','step']),place:findCol(headers,['checkpointlocation','location','place','destination']),role:findCol(headers,['role','operatorrole','actor']),notes:findCol(headers,['notes','evidence','remarks','description']),time:findCol(headers,['timestamp','time','datetime','eventdate']),status:findCol(headers,['status','verificationstatus'])};if(idx.id<0)return {added:0,updated:0,skipped:rows.length-1,missingId:true};let added=0,updated=0,skipped=0;for(const row of rows.slice(1)){const val=i=>i>=0?String(row[i]||'').trim():'';const id=val(idx.id).toUpperCase();if(!id){skipped++;continue}let b=batches[id];if(!b){b={id,product:val(idx.product)||'Produce',emoji:'🌱',origin:val(idx.origin)||'Not provided',harvest:val(idx.harvest)||'Not provided',freshness:'Not calculated',status:'incomplete',flag:false,events:[]};batches[id]=b;added++}else updated++;if(val(idx.product))b.product=val(idx.product);if(val(idx.origin))b.origin=val(idx.origin);if(val(idx.harvest))b.harvest=val(idx.harvest);const type=val(idx.type),place=val(idx.place),notes=val(idx.notes),time=val(idx.time),role=val(idx.role);if(type||place||notes){const signature=[type,place,time,notes].join('|').toLowerCase();if(!b.events.some(e=>[e.type,e.place,e.date,e.notes].join('|').toLowerCase()===signature)){const verified=/verified|confirmed|checked/i.test(val(idx.status));b.events.push({type:type||'Imported checkpoint',place:place||val(idx.origin)||'Location not provided',date:time||val(idx.harvest)||'Date not provided',role:role||'CSV import',notes:notes||'Imported from CSV; not independently verified.',verified});audit.unshift({batch:id,title:type||'CSV record imported',detail:place||notes||'Imported batch data',time:time||new Date().toLocaleString('en-IN'),role:role||'CSV import'})}}if(b.events.length)b.status=b.flag?'review':'recorded'}saveFarmTrace();renderStats();renderConsumer(currentBatch);return {added,updated,skipped}}
+function exportAllTracking(){const rows=[['Batch ID','Product','Origin','Harvest date','Status','Checkpoint','Location','Event time','Operator role','Notes','Checkpoint confirmed']];Object.values(batches).forEach(b=>{if(!b.events.length)rows.push([b.id,b.product,b.origin,b.harvest,statusLabel(b),'','','','','','No']);else b.events.forEach(e=>rows.push([b.id,b.product,b.origin,b.harvest,statusLabel(b),e.type,e.place,e.date,e.role,e.notes,e.verified?'Yes':'No']))});downloadCsv('farmtrace-complete-tracking.csv',rows)}
+function renderQrIllustration(id){const shell=document.getElementById('qrDisplay');const publicUrl=location.href.split('#')[0]+'#trace='+encodeURIComponent(id);shell.innerHTML='<img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&margin=8&data='+encodeURIComponent(publicUrl)+'" alt="QR code linking to batch '+esc(id)+'" style="width:100%;height:100%;object-fit:contain">'}
+function installFarmTraceWorkspace(){const banner=document.getElementById('roleBanner');if(!banner||document.getElementById('connectedWorkspace'))return;const section=document.createElement('section');section.id='connectedWorkspace';section.className='wrap section';section.innerHTML='<div class="section-head"><div><div class="eyebrow">Connected tracking workspace</div><h2>Create batches and move them through the chain</h2></div><p>Records save in this browser and can be exported or restored from CSV. For real multi-device access, connect a secure backend.</p></div><div class="panel form-panel"><form id="createBatchForm"><div class="form-grid"><div class="form-group"><label for="newBatchId">Batch ID (unique)</label><input id="newBatchId" class="field-control" placeholder="e.g. FT-2026-004" required></div><div class="form-group"><label for="newBatchProduct">Produce</label><input id="newBatchProduct" class="field-control" placeholder="Tomatoes, okra, chillies" required></div><div class="form-group"><label for="newBatchOrigin">Farm / origin</label><input id="newBatchOrigin" class="field-control" placeholder="Farm or village name" required></div><div class="form-group"><label for="newBatchHarvest">Harvest date</label><input id="newBatchHarvest" class="field-control" type="date" required></div><div class="form-group full"><button class="button primary" type="submit">Create batch →</button></div></div></form><div class="actions" style="margin-top:14px"><button class="button secondary" type="button" id="exportAllBatches">Export complete tracking CSV ↓</button><label class="button secondary" for="restoreCsv">Restore/import CSV ↑</label><input id="restoreCsv" type="file" accept=".csv,text/csv" class="hidden"></div><p class="helper">CSV import recognises common headers such as Batch ID, Product, Origin, Harvest Date, Checkpoint, Location, Timestamp, Role, Notes and Status.</p><div id="connectedImportStatus" class="notice" style="margin-top:12px">Local record storage is ready.</div><div id="connectedBatchList" class="batch-list" style="margin-top:14px"></div></div>';banner.insertAdjacentElement('afterend',section);document.getElementById('createBatchForm').addEventListener('submit',e=>{e.preventDefault();const id=document.getElementById('newBatchId').value.trim().toUpperCase();if(batches[id]){showToast('That batch ID already exists. Choose a unique ID.');return}batches[id]={id,product:document.getElementById('newBatchProduct').value.trim(),emoji:'🌱',origin:document.getElementById('newBatchOrigin').value.trim(),harvest:document.getElementById('newBatchHarvest').value, freshness:'Not calculated',status:'incomplete',flag:false,events:[]};audit.unshift({batch:id,title:'Batch created',detail:batches[id].product+' · '+batches[id].origin,time:new Date().toLocaleString('en-IN'),role:activeFarmTraceRole||'Farm'});saveFarmTrace();renderStats();renderConnectedBatches();document.getElementById('batchSearch').value=id;traceBatch(id);e.target.reset();showToast('Batch created and saved in this browser.')});document.getElementById('exportAllBatches').addEventListener('click',exportAllTracking);document.getElementById('restoreCsv').addEventListener('change',async e=>{const file=e.target.files&&e.target.files[0];if(!file)return;const result=importRowsIntoTracking(parseCsvRows(await file.text()));const status=document.getElementById('connectedImportStatus');status.textContent=result.missingId?'Import not applied: CSV needs a Batch ID column.':'Import complete: '+result.added+' new batches, '+result.updated+' existing batches updated, '+result.skipped+' rows skipped. Review imported data before treating it as verified.';renderConnectedBatches();showToast(result.missingId?'CSV needs a Batch ID column.':'CSV tracking import complete.');e.target.value=''})}
+function renderConnectedBatches(){const el=document.getElementById('connectedBatchList');if(!el)return;el.innerHTML=Object.values(batches).map(b=>'<div class="batch-row"><div class="batch-emoji">'+esc(b.emoji||'🌱')+'</div><div class="batch-info"><strong>'+esc(b.id)+' · '+esc(b.product)+'</strong><small>'+esc(b.origin)+' · '+b.events.length+' checkpoints</small></div><span class="tag '+statusClass(b)+'">'+esc(statusLabel(b))+'</span><button class="button secondary small" type="button" data-open-batch="'+esc(b.id)+'">Open</button></div>').join('');el.querySelectorAll('[data-open-batch]').forEach(btn=>btn.addEventListener('click',()=>{document.getElementById('batchSearch').value=btn.dataset.openBatch;traceBatch(btn.dataset.openBatch);document.getElementById('trace').scrollIntoView({behavior:'smooth'})}))}
+loadFarmTrace();installFarmTraceWorkspace();renderStats();renderConsumer(currentBatch);renderConnectedBatches();
+/* Persist checkpoint changes after the original form handler updates the data. */
+document.getElementById('checkpointForm').addEventListener('submit',()=>setTimeout(()=>{saveFarmTrace();renderConnectedBatches()},0));
+/* CSV imports from the data panel now also feed the live batch lookup. */
+document.getElementById('csvUpload').addEventListener('change',async e=>{const file=e.target.files&&e.target.files[0];if(!file)return;const result=importRowsIntoTracking(parseCsvRows(await file.text()));const status=document.getElementById('csvStatus');status.textContent=result.missingId?'CSV preview loaded, but tracking was not updated: add a Batch ID column.':'CSV loaded into tracking: '+result.added+' new batches, '+result.updated+' existing batches updated, '+result.skipped+' rows skipped. Imported records are not independently verified.';renderConnectedBatches()});
+if(location.hash.startsWith('#trace=')){const id=decodeURIComponent(location.hash.slice(7)).toUpperCase();document.getElementById('batchSearch').value=id;traceBatch(id)}
 
-        <div class="form-group">
-          <label for="rec-place">Place / Hub Name *</label>
-          <input type="text" id="rec-place" placeholder="e.g. Anand Cold Hub, Ahmedabad Dispatch" required />
-        </div>
-
-        <div class="form-group">
-          <label for="rec-notes">Quality & Handling Notes *</label>
-          <textarea id="rec-notes" placeholder="e.g. Produce condition verified, cold room maintained at 4°C" rows="3" required></textarea>
-        </div>
-
-        <div class="modal-actions">
-          <button type="button" class="btn btn-secondary" onclick="closeFtModal('ft-record-modal')">Cancel</button>
-          <button type="submit" id="rec-submit-btn" class="btn btn-primary">Save Checkpoint to Cloud</button>
-        </div>
-      </form>
-    </div>
-  </div>
-
-  <footer class="footer">
-    <div class="container">
-      <p>© 2026 FarmTrace. Powered by Cloud Firestore.</p>
-    </div>
-  </footer>
-
-  <script src="script.js"></script>
+</script>
+<script type="module">
+/* Firebase production connection. Create a Firebase project, enable Email/Password
+   Authentication and Firestore, then replace the config values below with the
+   Web app config from Firebase Console. Never put Admin SDK credentials here. */
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/11.10.0/firebase-app.js';
+import { getAuth, onAuthStateChanged, signInWithEmailAndPassword, signOut } from 'https://www.gstatic.com/firebasejs/11.10.0/firebase-auth.js';
+import { getFirestore, doc, getDoc, setDoc, collection, onSnapshot, serverTimestamp, query, orderBy, limit, addDoc } from 'https://www.gstatic.com/firebasejs/11.10.0/firebase-firestore.js';
+const firebaseConfig = {
+  apiKey: 'AIzaSyBeN1EfNT-IuchTqwm3PLgki5qXaJsCuB0',
+  authDomain: 'farmtrace-9cd9f.firebaseapp.com',
+  projectId: 'farmtrace-9cd9f',
+  storageBucket: 'farmtrace-9cd9f.firebasestorage.app',
+  messagingSenderId: '1050512053557',
+  appId: '1:1050512053557:web:f6065a44cd25062482687c',
+  measurementId: 'G-C38DXD637T'
+};
+const configured = firebaseConfig.apiKey !== 'REPLACE_WITH_FIREBASE_WEB_API_KEY' && !firebaseConfig.projectId.includes('REPLACE_');
+window.FARMTRACE_FIREBASE_ENABLED = configured;
+const gate = document.getElementById('loginGate');
+const loginError = document.getElementById('loginError');
+const loginUser = document.getElementById('loginUser');
+const loginPass = document.getElementById('loginPass');
+const credentialsNote = document.querySelector('.demo-credentials');
+if (credentialsNote) credentialsNote.innerHTML = configured
+  ? '<strong>Production sign-in</strong><br>Use the email and password created for your account by the FarmTrace administrator. Demo passwords are disabled.'
+  : '<strong>Firebase setup required</strong><br>Add your Firebase Web app configuration in this file, publish the site, then create user accounts and assign roles in Firestore. Demo sign-in remains available until configured.';
+if (configured) {
+  loginUser.type = 'email'; loginUser.autocomplete = 'username'; loginUser.placeholder = 'name@example.com';
+  const label = document.querySelector('label[for="loginUser"]'); if (label) label.textContent = 'Email address';
+  document.querySelector('#loginForm button[type="submit"]').innerHTML = 'Sign in with Firebase →';
+}
+let auth, db, stopBatchWatch = null, stopAuditWatch = null, writingRemote = false;
+const roleNames = {farm:'Farm', mandi:'Mandi', shop:'Shop', home:'Home'};
+function showSetupError(message) { loginError.textContent = message; }
+function asBatch(data, id) { return {...data, id, events: Array.isArray(data.events) ? data.events : []}; }
+function applyRemoteBatches(snapshot) {
+  const next = {};
+  snapshot.forEach(s => { next[s.id] = asBatch(s.data(), s.id); });
+  if (!Object.keys(next).length) return;
+  batches = next;
+  renderStats(); renderConnectedBatches();
+  const fromHash = location.hash.startsWith('#trace=') ? decodeURIComponent(location.hash.slice(7)).toUpperCase() : '';
+  const wanted = fromHash && batches[fromHash] ? fromHash : (batches[currentBatch] ? currentBatch : Object.keys(batches)[0]);
+  renderConsumer(wanted);
+  if (fromHash) { document.getElementById('batchSearch').value = fromHash; traceBatch(fromHash); }
+}
+async function persistAllToFirestore() {
+  if (!db || !auth?.currentUser || writingRemote) return;
+  writingRemote = true;
+  try {
+    for (const b of Object.values(batches)) {
+      const safe = {...b, updatedAt: serverTimestamp(), updatedBy: auth.currentUser.uid};
+      await setDoc(doc(db, 'batches', b.id), safe, {merge:true});
+    }
+  } catch (err) { showToast('Shared save failed. Check Firebase rules and connection.'); console.error(err); }
+  finally { writingRemote = false; }
+}
+async function writeAuditEvents() {
+  if (!db || !auth?.currentUser) return;
+  const newest = audit[0]; if (!newest) return;
+  try { await addDoc(collection(db, 'audit'), {...newest, actorUid:auth.currentUser.uid, createdAt:serverTimestamp()}); }
+  catch (err) { console.error('Audit write rejected by Firestore rules', err); }
+}
+async function connectUser(user) {
+  const userDoc = await getDoc(doc(db, 'users', user.uid));
+  if (!userDoc.exists()) { await signOut(auth); showSetupError('Your account has no assigned role. Ask the administrator to create users/'+user.uid+' with a role: farm, mandi, shop, or home.'); return; }
+  const profile = userDoc.data(); const role = String(profile.role || '').toLowerCase();
+  if (!roleNames[role]) { await signOut(auth); showSetupError('This account has an invalid role. Contact the FarmTrace administrator.'); return; }
+  activeFarmTraceRole = roleNames[role];
+  gate.classList.add('hidden');
+  document.getElementById('roleBanner').classList.remove('hidden');
+  document.getElementById('roleTitle').textContent = roleNames[role]+' workspace';
+  document.getElementById('roleDescription').textContent = ({farm:'Create batches and record harvest-origin details.',mandi:'Record receipt, weighing and handovers.',shop:'Record retail receipt and availability.',home:'Search public batch journeys and view QR reports.'})[role];
+  applyRoleView(roleNames[role]);
+  activateQrEntryMode();
+  if (stopBatchWatch) stopBatchWatch(); if (stopAuditWatch) stopAuditWatch();
+  stopBatchWatch = onSnapshot(collection(db,'batches'), applyRemoteBatches, err => { console.error(err); showToast('Could not read shared batches. Check Firestore rules.'); });
+  stopAuditWatch = onSnapshot(query(collection(db,'audit'),orderBy('createdAt','desc'),limit(30)), snap => {
+    audit = snap.docs.map(s => ({...s.data(), id:s.id, time:s.data().createdAt?.toDate?.().toLocaleString('en-IN') || s.data().time || 'Recent'}));
+    renderBatchList();
+  }, err => console.warn('Audit stream unavailable',err));
+  showToast('Connected to shared FarmTrace workspace.');
+}
+if (configured) {
+  try {
+    const app = initializeApp(firebaseConfig); auth = getAuth(app); db = getFirestore(app);
+    document.getElementById('loginForm').addEventListener('submit', async e => {
+      e.preventDefault(); e.stopImmediatePropagation(); loginError.textContent = '';
+      try { await signInWithEmailAndPassword(auth,loginUser.value.trim(),loginPass.value); }
+      catch (err) { showSetupError(err.code === 'auth/invalid-credential' ? 'Email or password is incorrect.' : 'Sign-in failed: '+err.message); }
+    }, true);
+    onAuthStateChanged(auth, user => { if (user) connectUser(user).catch(err => { console.error(err); showSetupError('Could not load your role. Check that your user profile exists and Firestore rules allow reading it.'); }); else { if(stopBatchWatch)stopBatchWatch(); if(stopAuditWatch)stopAuditWatch(); document.body.classList.remove('qr-entry-mode'); const form=document.getElementById('checkpointForm'); const original=document.querySelector('#operator .form-panel'); if(form&&original)original.appendChild(form); document.getElementById('roleBanner').classList.add('hidden'); gate.classList.remove('hidden'); } });
+    window.farmTraceLogout = async () => { await signOut(auth); activeFarmTraceRole = null; loginPass.value = ''; loginError.textContent = ''; };
+    const oldSave = window.saveFarmTrace;
+    window.saveFarmTrace = function(){ if(oldSave)oldSave(); persistAllToFirestore(); };
+    const oldCreate = document.getElementById('createBatchForm');
+    if (oldCreate) oldCreate.addEventListener('submit', () => setTimeout(writeAuditEvents, 200), true);
+    document.getElementById('checkpointForm').addEventListener('submit', () => setTimeout(() => { persistAllToFirestore(); writeAuditEvents(); }, 300), true);
+    document.getElementById('restoreCsv')?.addEventListener('change', () => setTimeout(() => { persistAllToFirestore(); writeAuditEvents(); }, 500));
+    document.getElementById('csvUpload')?.addEventListener('change', () => setTimeout(() => { persistAllToFirestore(); writeAuditEvents(); }, 500));
+  } catch (err) { console.error('Firebase initialization failed',err); showSetupError('Firebase configuration is invalid. Check the Web app config and reload.'); }
+}
+</script>
 </body>
 </html>
